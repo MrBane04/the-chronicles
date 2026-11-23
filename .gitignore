@@ -6,6 +6,9 @@
 secrets.json
 **/secrets.json
 
+# Local Docker secrets
+docker/secrets/
+
 # Node.js
 node_modules/
 dist/

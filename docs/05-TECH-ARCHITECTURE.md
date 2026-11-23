@@ -21,6 +21,7 @@ The initial development environment is local. Hosting and production infrastruct
 | Frontend                 | React                          |
 | Frontend tooling         | Vite                           |
 | Frontend language        | TypeScript                     |
+| Backend runtime          | .NET 10 LTS                    |
 | Backend                  | ASP.NET Core Web API           |
 | Backend language         | C#                             |
 | Architecture             | Modular Monolith               |

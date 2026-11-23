@@ -1,0 +1,6 @@
+@TheChronicles.Api_HostAddress = http://localhost:5078
+
+GET {{TheChronicles.Api_HostAddress}}/health
+Accept: text/plain
+
+###

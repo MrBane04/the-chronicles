@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: chronicles-postgres
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT}:5432"
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+
+    secrets:
+      - postgres_password
+
+    volumes:
+      - chronicles_postgres_data:/var/lib/postgresql
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  chronicles_postgres_data:
+
+secrets:
+  postgres_password:
+    file: ./secrets/postgres_password.txt
